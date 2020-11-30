@@ -18,3 +18,7 @@ In order to enable REST API access declare the constant NOX_LR_ENABLE_REST with 
 = 1.0.0 =
 
   * Initial release
+
+= 1.0.1 =
+
+  * Added the possibility to load an HTML file.
