@@ -3,9 +3,9 @@
     /**
      * Plugin Name: Login Required
      * Description: Lock down the whole WordPress site to prevent public access. Only logged-in users can view the site or the content of the REST API if this plugin is activated.
-     * Plugin URI:  https://github.com/nox-it/wp-nox-login-required
-     * Author:      NOX IT
-     * Author URI:  https://github.com/nox-it
+     * Plugin URI:  https://github.com/nyx-it/wp-nyx-login-required
+     * Author:      NYX IT
+     * Author URI:  https://github.com/nyx-it
      * License:     GNU General Public License v2 or later
      * License URI: http://www.gnu.org/licenses/gpl-2.0.html
      * Version:     1.0.1
@@ -13,22 +13,22 @@
 
     defined('ABSPATH') or die();
 
-    defined('NOX_LR_ENABLE_REST')        or define('NOX_LR_ENABLE_REST',        false);
-    defined('NOX_LR_USE_LOGIN_REDIRECT') or define('NOX_LR_USE_LOGIN_REDIRECT', true);
-    defined('NOX_LR_HTML_FILE_PATH')     or define('NOX_LR_HTML_FILE_PATH',     null);
+    defined('NYX_LR_ENABLE_REST')        or define('NYX_LR_ENABLE_REST',        false);
+    defined('NYX_LR_USE_LOGIN_REDIRECT') or define('NYX_LR_USE_LOGIN_REDIRECT', true);
+    defined('NYX_LR_HTML_FILE_PATH')     or define('NYX_LR_HTML_FILE_PATH',     null);
 
 
     add_action(
         'template_redirect',
         static function () {
             if (!is_user_logged_in()) {
-                $canRedirect = NOX_LR_USE_LOGIN_REDIRECT;
+                $canRedirect = NYX_LR_USE_LOGIN_REDIRECT;
 
                 if (!$canRedirect) {
-                    $htmlFilePath = NOX_LR_HTML_FILE_PATH;
+                    $htmlFilePath = NYX_LR_HTML_FILE_PATH;
 
                     if (is_file($htmlFilePath)) {
-                        $html = file_get_contents(NOX_LR_HTML_FILE_PATH);
+                        $html = file_get_contents(NYX_LR_HTML_FILE_PATH);
 
                         echo $html;
 
@@ -55,7 +55,7 @@
     );
 
 
-    if (!NOX_LR_ENABLE_REST) {
+    if (!NYX_LR_ENABLE_REST) {
         add_filter(
             'rest_authentication_errors',
             function ($result) {
